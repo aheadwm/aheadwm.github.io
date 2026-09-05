@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AHEAD: a latent-space predictive world model for dynamic VLA manipulation. Accepted to CoRL 2026.">
+  <meta name="keywords" content="AHEAD, VLA, World Models, CoRL, Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AHEAD: Intercepting the Future</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://momentum-robotics-lab.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://momentum-robotics-lab.github.io/">
+            Momentum Robotics Lab
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2606.02486">
+            AHEAD (arXiv)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Intercepting the Future: Latent-Space Predictive World Model for Dynamic VLA Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://shahramnajamsyed.com/">Shahram Najam Syed</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://arthurjakobsson.com">Arthur Jakobsson</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              Haoran Hao<sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ichnow.ski/">Jeffrey Ichnowski</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup><a href="https://momentum-robotics-lab.github.io/">Momentum Robotics Lab</a>, Robotics Institute, Carnegie Mellon University</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="publication-awards">Accepted to CoRL 2026</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="publication-venue">10th Conference on Robot Learning (CoRL 2026), Austin, TX, USA</span>
+          </div>
+          <p class="is-size-6" style="margin-top: 0.4rem;">* Equal contribution</p>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2606.02486"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2606.02486"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#video"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-play"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://momentum-robotics-lab.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-university"></i>
+                  </span>
+                  <span>Lab</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#BibTeX"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-quote-right"></i>
+                  </span>
+                  <span>BibTeX</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered is-mobile is-multiline is-variable is-1">
+        <div class="column is-6">
+          <img src="./static/images/teaser_conveyor_ducky.png" alt="AHEAD conveyor pick of a moving duck.">
+        </div>
+        <div class="column is-6">
+          <img src="./static/images/teaser_conveyor_box.png" alt="AHEAD placing an object into a moving box.">
+        </div>
+        <div class="column is-6">
+          <img src="./static/images/teaser_paddle.png" alt="AHEAD paddle interception of a projectile.">
+        </div>
+        <div class="column is-6">
+          <img src="./static/images/teaser_catch.png" alt="AHEAD catching a projectile.">
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">AHEAD</span> wraps a frozen VLA with a latent world model so the robot acts where the object will be.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="./static/images/physical_conveyor_object.png" alt="Physical xArm 7: moving object into a static box.">
+        </div>
+        <div class="item">
+          <img src="./static/images/physical_conveyor_box.png" alt="Physical xArm 7: static object into a moving box.">
+        </div>
+        <div class="item">
+          <img src="./static/images/physical_paddle.png" alt="Physical xArm 7: paddle interception.">
+        </div>
+        <div class="item">
+          <img src="./static/images/physical_catch.png" alt="Physical xArm 7: projectile catching.">
+        </div>
+        <div class="item">
+          <img src="./static/images/sim_occlusion.png" alt="Simulation: occlusion catch.">
+        </div>
+        <div class="item">
+          <img src="./static/images/sim_airhockey.png" alt="Simulation: air hockey.">
+        </div>
+        <div class="item">
+          <img src="./static/images/sim_ballistic.png" alt="Simulation: ballistic catch.">
+        </div>
+        <div class="item">
+          <img src="./static/images/sim_deflect.png" alt="Simulation: mid-flight deflection.">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Vision-Language-Action (VLA) models fail when objects move during execution.
+            They map the current observation to an action and assume the scene is stationary,
+            so latency exceeds the time available to grasp.
+          </p>
+          <p>
+            We close this gap with <span class="dnerf">AHEAD</span>
+            (Anticipatory Horizon Extrapolation with Adaptive Dynamics), a predict-then-act
+            wrapper that augments a frozen VLA with a 4.9M-parameter latent world model.
+            The model forecasts future patch tokens from optical-flow kinematics, concentrates
+            compute on language-and-motion salient patches, and feeds the prediction to the
+            unchanged action decoder.
+            It reaches 79 to 97% success across 20 dynamic simulation scenarios
+            (strongest baseline 31 to 58%) and 19/30 projectile catches on an xArm 7,
+            where every baseline scores 0/30.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered" id="video">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <div class="has-text-centered" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#f5f5f5; color:#555;">
+            Video coming soon
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Method. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Method</h2>
+          <p>
+            RAFT flow gives per-patch velocity and acceleration.
+            A language-and-motion mask keeps task-relevant tokens.
+            Conditional flow matching rolls them forward until uncertainty says stop.
+            The frozen OpenVLA decoder never sees the stale frame.
+          </p>
+          <img src="./static/images/architecture.png" alt="AHEAD architecture diagram.">
+        </div>
+      </div>
+      <!--/ Method. -->
+
+      <!-- Physical. -->
+      <div class="column">
+        <h2 class="title is-3">Physical Robot</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              On a UFactory xArm 7: 30/30 and 29/30 on conveyor tasks,
+              30/30 stopping a rolling ball, 23/30 paddle intercept,
+              and 19/30 projectile catches.
+            </p>
+            <img src="./static/images/physical_catch.png" alt="Physical projectile catching setup.">
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Physical. -->
+
+    <!-- Results figures. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Simulation</h2>
+        <div class="content has-text-justified">
+          <p>
+            Twenty dynamic scenes: constant-velocity transport, gravity, contact, occlusion,
+            and mid-flight deflection. Occlusion is 79.4% for AHEAD; most baselines are 0.
+          </p>
+        </div>
+        <div class="columns is-multiline is-mobile is-variable is-1">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/sim_conveyor.png" alt="Conveyor scene.">
+            <p>Conveyor</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/sim_beam.png" alt="Beam scene.">
+            <p>Beam</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/sim_roll.png" alt="Rolling ball scene.">
+            <p>Rolling ball</p>
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/sim_occlusion.png" alt="Occlusion scene.">
+            <p>Occlusion</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Results figures. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{syed2026ahead,
+  title     = {Intercepting the Future: Latent-Space Predictive World Model for Dynamic {VLA} Manipulation},
+  author    = {Syed, Shahram Najam and Jakobsson, Arthur and Hao, Haoran and Ichnowski, Jeffrey},
+  booktitle = {Proceedings of the 10th Conference on Robot Learning ({CoRL} 2026)},
+  address   = {Austin, TX, USA},
+  year      = {2026},
+  eprint    = {2606.02486},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url       = {https://arxiv.org/abs/2606.02486}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2606.02486">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/aheadwm/aheadwm.github.io" class="external-link">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The page design is borrowed from the
+            <a href="https://nerfies.github.io">Nerfies</a>
+            <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
