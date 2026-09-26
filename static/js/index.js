@@ -1,25 +1,10 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 $(document).ready(function() {
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var options = {
-      slidesToScroll: 1,
-      slidesToShow: 3,
-      loop: true,
-      infinite: false,
-      autoplay: !reduceMotion,
-      autoplaySpeed: 7000,
-      duration: reduceMotion ? 0 : 700,
-      pauseOnHover: true,
-      breakpoints: [
-        { changePoint: 700, slidesToShow: 1, slidesToScroll: 1 },
-        { changePoint: 1000, slidesToShow: 2, slidesToScroll: 1 },
-        { changePoint: 1400, slidesToShow: 3, slidesToScroll: 1 },
-        { changePoint: 1800, slidesToShow: 4, slidesToScroll: 1 }
-      ]
-    };
-
-    bulmaCarousel.attach('#results-carousel', options);
+    var reduceMotion = false;
+    try {
+      reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch (e) {}
 
     var TASKS = {
       catch: {
@@ -58,6 +43,7 @@ $(document).ready(function() {
     var rateReal = document.getElementById('task-rate-real');
     var rateSim = document.getElementById('task-rate-sim');
     var taskPanel = document.getElementById('task-panel');
+    var taskPicker = document.querySelector('.task-picker');
     var taskButtons = Array.prototype.slice.call(document.querySelectorAll('.task-option'));
 
     function setTask(name, opts) {
@@ -68,23 +54,27 @@ $(document).ready(function() {
         var active = btn.getAttribute('data-task') === name;
         btn.classList.toggle('is-active', active);
         btn.setAttribute('aria-selected', active ? 'true' : 'false');
-        btn.setAttribute('tabindex', active ? '0' : '-1');
+        btn.tabIndex = 0;
       });
       if (taskPanel && task.tabId) {
         taskPanel.setAttribute('aria-labelledby', task.tabId);
       }
       if (simVideo) {
-        simVideo.src = task.sim;
+        simVideo.pause();
+        simVideo.setAttribute('src', task.sim);
         simVideo.load();
         if (!reduceMotion) {
-          simVideo.play().catch(function() {});
+          var playSim = simVideo.play();
+          if (playSim && playSim.catch) playSim.catch(function() {});
         }
       }
       if (realVideo) {
-        realVideo.src = task.real;
+        realVideo.pause();
+        realVideo.setAttribute('src', task.real);
         realVideo.load();
         if (!reduceMotion) {
-          realVideo.play().catch(function() {});
+          var playReal = realVideo.play();
+          if (playReal && playReal.catch) playReal.catch(function() {});
         }
       }
       if (rateReal) rateReal.textContent = task.realRate;
@@ -95,10 +85,16 @@ $(document).ready(function() {
       }
     }
 
-    taskButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
+    if (taskPicker) {
+      taskPicker.addEventListener('click', function(event) {
+        var button = event.target.closest('.task-option');
+        if (!button || !taskPicker.contains(button)) return;
+        event.preventDefault();
         setTask(button.getAttribute('data-task'));
       });
+    }
+
+    taskButtons.forEach(function(button) {
       button.addEventListener('keydown', function(event) {
         var key = event.key;
         var idx = taskOrder.indexOf(button.getAttribute('data-task'));
@@ -112,6 +108,10 @@ $(document).ready(function() {
           next = 0;
         } else if (key === 'End') {
           next = taskOrder.length - 1;
+        } else if (key === 'Enter' || key === ' ') {
+          event.preventDefault();
+          setTask(button.getAttribute('data-task'));
+          return;
         } else {
           return;
         }
@@ -120,12 +120,39 @@ $(document).ready(function() {
       });
     });
 
+    var isPhone = window.matchMedia('(max-width: 700px)').matches;
+    var options = {
+      slidesToScroll: 1,
+      slidesToShow: 3,
+      loop: true,
+      infinite: false,
+      autoplay: !reduceMotion,
+      autoplaySpeed: 7000,
+      duration: reduceMotion ? 0 : 700,
+      pauseOnHover: true,
+      pagination: !isPhone,
+      navigation: true,
+      breakpoints: [
+        { changePoint: 700, slidesToShow: 1, slidesToScroll: 1 },
+        { changePoint: 1000, slidesToShow: 2, slidesToScroll: 1 },
+        { changePoint: 1400, slidesToShow: 3, slidesToScroll: 1 },
+        { changePoint: 1800, slidesToShow: 4, slidesToScroll: 1 }
+      ]
+    };
+
+    try {
+      bulmaCarousel.attach('#results-carousel', options);
+    } catch (err) {
+      console.warn('Carousel init failed', err);
+    }
+
     if ('IntersectionObserver' in window) {
       var videoObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           var video = entry.target;
           if (entry.isIntersecting && !reduceMotion) {
-            video.play().catch(function() {});
+            var playPromise = video.play();
+            if (playPromise && playPromise.catch) playPromise.catch(function() {});
           } else {
             video.pause();
           }
