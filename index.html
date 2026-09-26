@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=7">
+  <link rel="stylesheet" href="./static/css/index.css?v=8">
   <link rel="apple-touch-icon" sizes="180x180" href="./static/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./static/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./static/images/favicon-16x16.png">
@@ -28,7 +28,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js?v=7"></script>
+  <script src="./static/js/index.js?v=8"></script>
 </head>
 <body>
 
@@ -236,20 +236,20 @@
         <p class="slide-caption"><span class="badge-ok">Success</span> <strong>Language + multi-object sort</strong> Ground the instruction while objects move.</p>
       </div>
       <div class="item">
-        <img src="./static/gifs/fail_extreme_accel.gif" alt="Extreme acceleration failure case." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Struggles</span> <strong>Extreme acceleration</strong> Abrupt speed changes make the constant-acceleration update overshoot.</p>
+        <img src="./static/gifs/stress_multi_deflection.gif" alt="Multiple deflection failure." loading="lazy">
+        <p class="slide-caption"><span class="badge-fail">Stress · 76%</span> <strong>Multiple deflection</strong> Unpredictable redirections; only with a long reaction window.</p>
       </div>
       <div class="item">
-        <img src="./static/gifs/stress_multi_deflection.gif" alt="Multiple deflection stress test." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 76%</span> <strong>Unpredictable redirection</strong> Multiple bounces; only with a long reaction window.</p>
+        <img src="./static/gifs/stress_occlusion_deflection.gif" alt="Occlusion deflection failure." loading="lazy">
+        <p class="slide-caption"><span class="badge-fail">Stress · 68%</span> <strong>Occlusion deflection</strong> Trajectory changes while occluded; nothing to track mid-hide.</p>
       </div>
       <div class="item">
-        <img src="./static/gifs/stress_occlusion_deflection.gif" alt="Occlusion deflection stress test." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 68%</span> <strong>Hidden deflection</strong> Trajectory changes while occluded; nothing to track mid-hide.</p>
+        <img src="./static/gifs/stress_chaotic_cradle.gif" alt="Chaotic Newton's cradle failure." loading="lazy">
+        <p class="slide-caption"><span class="badge-fail">Stress</span> <strong>Chaotic Newton's cradle</strong> Cascading collisions scramble the trajectory.</p>
       </div>
       <div class="item">
-        <img src="./static/gifs/stress_plinko.gif" alt="Plinko drop stress test." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 48.6%</span> <strong>Chaotic post-collision</strong> Plinko pegs randomize the path.</p>
+        <img src="./static/gifs/stress_plinko.gif" alt="Plinko drop failure." loading="lazy">
+        <p class="slide-caption"><span class="badge-fail">Stress · 48.6%</span> <strong>Plinko drop</strong> Pegs randomize the path after each collision.</p>
       </div>
     </div>
   </div>
