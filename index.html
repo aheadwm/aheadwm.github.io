@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="description"
         content="Intercepting the Future: a latent-space predictive world model for dynamic VLA manipulation. Accepted to CoRL 2026.">
   <meta name="keywords" content="AHEAD, VLA, World Models, CoRL, Manipulation">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Intercepting the Future</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css?v=8">
+  <link rel="stylesheet" href="./static/css/index.css?v=9">
   <link rel="apple-touch-icon" sizes="180x180" href="./static/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./static/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./static/images/favicon-16x16.png">
@@ -28,12 +28,13 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js?v=8"></script>
+  <script src="./static/js/index.js?v=9"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <div class="top-fold">
-<section class="hero">
+<section class="hero" aria-label="Paper title and authors">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -62,11 +63,11 @@
           <p class="is-size-6 equal-note">* Equal contribution</p>
 
           <div class="column has-text-centered">
-            <div class="publication-links">
+            <div class="publication-links" role="navigation" aria-label="Paper links">
               <span class="link-block">
                 <a href="https://arxiv.org/pdf/2606.02486"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                  <span class="icon" aria-hidden="true">
                       <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
@@ -75,7 +76,7 @@
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2606.02486"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                  <span class="icon" aria-hidden="true">
                       <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
@@ -84,7 +85,7 @@
               <span class="link-block">
                 <a href="https://momentum-robotics-lab.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                  <span class="icon" aria-hidden="true">
                       <i class="fas fa-university"></i>
                   </span>
                   <span>Lab</span>
@@ -93,7 +94,7 @@
               <span class="link-block">
                 <a href="#BibTeX"
                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
+                  <span class="icon" aria-hidden="true">
                       <i class="fas fa-quote-right"></i>
                   </span>
                   <span>BibTeX</span>
@@ -110,27 +111,29 @@
 
 
 <!-- Task showcase -->
-<section class="hero teaser" id="video">
+<section class="hero teaser" id="video" aria-label="Physical and simulation task videos">
   <div class="container is-max-widescreen">
     <div class="hero-body">
-      <div class="task-picker" role="tablist" aria-label="Task">
-        <button type="button" class="task-option is-active" data-task="catch">Catch</button>
-        <button type="button" class="task-option" data-task="intercept">Intercept</button>
-        <button type="button" class="task-option" data-task="conveyor">Conveyor Belt</button>
-        <button type="button" class="task-option" data-task="movingbox">Moving Box</button>
+      <div class="task-picker" role="tablist" aria-label="Select a demonstration task">
+        <button type="button" class="task-option is-active" role="tab" id="tab-catch" data-task="catch" aria-selected="true" aria-controls="task-panel" tabindex="0">Catch</button>
+        <button type="button" class="task-option" role="tab" id="tab-intercept" data-task="intercept" aria-selected="false" aria-controls="task-panel" tabindex="-1">Intercept</button>
+        <button type="button" class="task-option" role="tab" id="tab-conveyor" data-task="conveyor" aria-selected="false" aria-controls="task-panel" tabindex="-1">Conveyor Belt</button>
+        <button type="button" class="task-option" role="tab" id="tab-movingbox" data-task="movingbox" aria-selected="false" aria-controls="task-panel" tabindex="-1">Moving Box</button>
       </div>
 
-      <div class="task-stage">
+      <div class="task-stage" id="task-panel" role="tabpanel" aria-labelledby="tab-catch">
         <figure class="task-pane">
-          <div class="task-pane-label real">Real</div>
-          <div class="task-rate" id="task-rate-real">19/30</div>
+          <div class="task-pane-label real" aria-hidden="true">Real</div>
+          <div class="task-rate" id="task-rate-real" aria-live="polite">19/30</div>
           <video id="task-real" autoplay muted loop playsinline controls
+                 aria-label="Real robot demonstration for the selected task"
                  src="./static/videos/task_catch_real.mp4"></video>
         </figure>
         <figure class="task-pane">
-          <div class="task-pane-label sim">Simulation</div>
-          <div class="task-rate" id="task-rate-sim">~90%</div>
+          <div class="task-pane-label sim" aria-hidden="true">Simulation</div>
+          <div class="task-rate" id="task-rate-sim" aria-live="polite">~90%</div>
           <video id="task-sim" autoplay muted loop playsinline controls
+                 aria-label="Simulation demonstration for the selected task"
                  src="./static/videos/task_catch_sim.mp4"></video>
         </figure>
       </div>
@@ -140,6 +143,7 @@
 </div>
 
 
+<main id="main-content">
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -266,11 +270,13 @@
       <figure class="compare-pane fail">
         <div class="compare-badge">Open-loop VLA: fail</div>
         <video autoplay muted loop playsinline controls
+               aria-label="Open-loop VLA failing on the conveyor belt task"
                src="./static/videos/compare_baseline.mp4"></video>
       </figure>
       <figure class="compare-pane success">
         <div class="compare-badge">AHEAD: success</div>
         <video autoplay muted loop playsinline controls
+               aria-label="AHEAD succeeding on the conveyor belt task"
                src="./static/videos/compare_ahead.mp4"></video>
       </figure>
     </div>
@@ -323,17 +329,20 @@
 }</code></pre>
   </div>
 </section>
+</main>
 
 
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="https://arxiv.org/pdf/2606.02486">
-        <i class="fas fa-file-pdf"></i>
+         href="https://arxiv.org/pdf/2606.02486"
+         aria-label="Download paper PDF">
+        <i class="fas fa-file-pdf" aria-hidden="true"></i>
       </a>
-      <a class="icon-link" href="https://github.com/aheadwm/aheadwm.github.io" class="external-link">
-        <i class="fab fa-github"></i>
+      <a class="icon-link" href="https://github.com/aheadwm/aheadwm.github.io" class="external-link"
+         aria-label="GitHub repository">
+        <i class="fab fa-github" aria-hidden="true"></i>
       </a>
     </div>
     <div class="columns is-centered">
