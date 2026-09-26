@@ -192,7 +192,7 @@
   <div class="container is-max-widescreen">
     <h2 class="title is-3 has-text-centered">Simulation results</h2>
     <p class="section-note">
-      Successes first (79-97% in-distribution), then stress cases where prediction degrades.
+      Successes first (79-97% in-distribution), then lower-success cases where prediction degrades.
     </p>
     <div id="results-carousel" class="carousel results-carousel">
       <div class="item">
@@ -241,19 +241,19 @@
       </div>
       <div class="item">
         <img src="./static/gifs/stress_multi_deflection.gif" alt="Multiple deflection failure." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 76%</span> <strong>Multiple deflection</strong> Unpredictable redirections; only with a long reaction window.</p>
+        <p class="slide-caption"><span class="badge-fail">Lower success</span> <strong>Multiple deflection</strong> Unpredictable redirections; only with a long reaction window.</p>
       </div>
       <div class="item">
         <img src="./static/gifs/stress_occlusion_deflection.gif" alt="Occlusion deflection failure." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 68%</span> <strong>Occlusion deflection</strong> Trajectory changes while occluded; nothing to track mid-hide.</p>
+        <p class="slide-caption"><span class="badge-fail">Lower success</span> <strong>Occlusion deflection</strong> Trajectory changes while occluded; nothing to track mid-hide.</p>
       </div>
       <div class="item">
         <img src="./static/gifs/stress_chaotic_cradle.gif" alt="Chaotic Newton's cradle failure." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress</span> <strong>Chaotic Newton's cradle</strong> Cascading collisions scramble the trajectory.</p>
+        <p class="slide-caption"><span class="badge-fail">Lower success</span> <strong>Chaotic Newton's cradle</strong> Cascading collisions scramble the trajectory.</p>
       </div>
       <div class="item">
         <img src="./static/gifs/stress_plinko.gif" alt="Plinko drop failure." loading="lazy">
-        <p class="slide-caption"><span class="badge-fail">Stress · 48.6%</span> <strong>Plinko drop</strong> Pegs randomize the path after each collision.</p>
+        <p class="slide-caption"><span class="badge-fail">Lower success</span> <strong>Plinko drop</strong> Pegs randomize the path after each collision.</p>
       </div>
     </div>
   </div>
