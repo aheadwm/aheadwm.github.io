@@ -206,36 +206,39 @@ body {
 .publication-title {
   font-family: 'Google Sans', sans-serif;
   font-size: var(--text-hero) !important;
-  line-height: 1.15 !important;
+  line-height: 1.2 !important;
   margin-bottom: var(--space-sm) !important;
   font-weight: 700 !important;
   color: var(--ink);
-  max-width: min(34ch, 100%);
+  max-width: min(42rem, 94vw);
   margin-left: auto;
   margin-right: auto;
   padding: 0 var(--space-sm);
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 @media screen and (min-width: 900px) {
   .publication-title {
-    max-width: min(48ch, 100%);
+    max-width: min(52rem, 90vw);
   }
 }
 
 @media screen and (min-width: 1400px) {
   .publication-title {
-    max-width: min(56ch, 100%);
+    max-width: min(58rem, 86vw);
   }
 }
 
 .publication-title .title-accent {
+  display: block;
   color: var(--accent);
   font-style: italic;
   font-weight: 700;
+  margin-bottom: 0.12em;
 }
 
 .publication-title .title-rest {
+  display: block;
   color: var(--ink);
   font-style: normal;
   font-weight: 700;
